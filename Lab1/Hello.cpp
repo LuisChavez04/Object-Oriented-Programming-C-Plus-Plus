@@ -1,5 +1,6 @@
 /***
- * {Short Description of the Lab}
+ * This lab is to make me familiar with the C++ coding
+ * As well as familiarize with GitHub, VS Code, and certain commands
  ***/
 
 #include <iostream>
