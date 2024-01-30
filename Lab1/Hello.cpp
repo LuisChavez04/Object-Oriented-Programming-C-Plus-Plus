@@ -6,7 +6,7 @@
 #include <iostream>
 #include <cstdlib>
 using namespace std;
-bgrtrt
+
 int main() {
     cout << "Hello World!" << endl;
     printf("Hello World again!\n");
