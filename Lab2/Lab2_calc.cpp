@@ -1,6 +1,7 @@
 //Lab2_calc.cpp
 /***
- * {Short Description of the lab}
+ * {This lab will calculate and display answers for one integer divided by another integer.
+ * It will also display the answer for one integer divided by a double. The numerical values chosen are unable to change}
 ***/
 
 #include <iostream>
