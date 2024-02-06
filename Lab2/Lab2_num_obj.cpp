@@ -1,6 +1,8 @@
 //Lab1_num_obj.cpp
 /***
- * {Short Description of the lab}
+ * {This lab will display different examples of number objects.
+ * For example: integers, floats, doubles, characters, and booleans
+ * These will be displayed with an example of what each is.}
 ***/
 
 #include <iostream>
