@@ -1,8 +1,8 @@
 //Lab1_num_obj.cpp
 /***
- * {This lab will display different examples of number objects.
+ * {This lab will display the number of bytes that each object possesses.
  * For example: integers, floats, doubles, characters, and booleans
- * These will be displayed with an example of what each is.}
+ * These will be displayed with a corresponding byte each has.}
 ***/
 
 #include <iostream>
