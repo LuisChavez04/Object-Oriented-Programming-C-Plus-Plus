@@ -2,6 +2,9 @@
 #include <cmath>
 
 using namespace std;
+// This lab will run a Control FLow program that we reference
+// from a diagram. The program utilizes a while loop
+// and if/else statements
 
 int main()
 {
