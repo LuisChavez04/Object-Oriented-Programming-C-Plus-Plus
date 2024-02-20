@@ -52,21 +52,51 @@ string select(string func_type){
     func_type == "sum";
     if (func_type == "sum"){
         out = "The sum is ";
-        return out;
+    } else if(func_type == "division"){
+        out = "The quotient is ";
+    } else if(func_type == "comparison"){
+        out = "The first value being greater than the second value is ";
     } else {
-        func_type == "division";
-        if(func_type == "division"){
-            out = "The quotient is ";
-            return out;
-        } else {
-            func_type == "comparison";
-            if(func_type == "comparison"){
-                out = "The first value being greater than the second value is ";
-                return out;
-            } else {
-                out = "Invalid function type\n";
-                return out;
-            }
-            }
+        out = "invalid function type\n";
+
     }
+    return out;
+}
+
+/** myPrint
+ * @brief Calls select() to print out the output with the correct prompt
+ * 
+ * @tparam T : (int, double, or string) output of sum, division, or isGreater Than
+ * @param func_type : (string)
+ * @param output
+*/
+template <typename T>
+void myPrint(string func_type, T output){
+    cout << select(func_type) << output << endl;
+}
+
+int main()
+{
+    // initialize 3 int parameters
+    int x = 2;
+    int y = 3;
+    int z = 5;
+
+    // call sumOfThree
+    int sum_out = sumOfThree(x, y, z);
+    // call myPrint
+    myPrint("sum", sum_out);
+
+    // initialize 2 double parameters
+    double dividend = 12345.1;
+    double divisor = 2345.6
+
+    // call division
+    double div_out = division(dividned, divisor);
+    myPrint("division", div_out);
+
+    // compare div_out and sum_out
+    bool is_great_out = isGreaterThan(div_out, sum_out);
+    myPrint("comparison", is_greater_out);
+    return 0;
 }
