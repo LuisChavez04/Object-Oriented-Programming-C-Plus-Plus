@@ -49,7 +49,6 @@ bool isGreaterThan(double x, int y){
 
 string select(string func_type){
     string out = "";
-    func_type == "sum";
     if (func_type == "sum"){
         out = "The sum is ";
     } else if(func_type == "division"){
@@ -89,14 +88,14 @@ int main()
 
     // initialize 2 double parameters
     double dividend = 12345.1;
-    double divisor = 2345.6
+    double divisor = 2345.6;
 
     // call division
-    double div_out = division(dividned, divisor);
+    double div_out = division(dividend, divisor);
     myPrint("division", div_out);
 
     // compare div_out and sum_out
-    bool is_great_out = isGreaterThan(div_out, sum_out);
+    bool is_greater_out = isGreaterThan(div_out, sum_out);
     myPrint("comparison", is_greater_out);
     return 0;
 }
