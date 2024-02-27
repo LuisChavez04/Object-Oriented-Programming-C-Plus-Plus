@@ -23,10 +23,11 @@ class RPG {
         void useSkill(RPG *);
 
         //Accessors
-        string getName();
-        int getHealth();
-        int getStrength();
-        int getDefense();
+        bool isAlive();
+        string getName() const;
+        int getHealth() const;
+        int getStrength() const;
+        int getDefense() const;
         string getType();
 
 
