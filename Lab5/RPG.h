@@ -14,19 +14,29 @@ class RPG {
         RPG(string name, int health, int strength, int defense, string type);
 
         //Complete the rest
-        RPG::RPG();
-        RPG::RPG(string, int, int, int, string);
         
+        //Mutators
         void setSkills();
         void printAction(string, RPG);
-        void updateHealth(int);
+        void updateHealth(int new_health);
         void attack(RPG *);
         void useSkill(RPG *);
 
+        //Accessors
+        string getName();
+        int getHealth();
+        int getStrength();
+        int getDefense();
+        string getType();
+
+
     private:
         //Complete the rest
-
-
+        string name;
+        int health;
+        int strength;
+        int defense;
+        
         string type; //Warrior, Mage, Thief, Archer
         string skills[SKILL_SIZE];
 
