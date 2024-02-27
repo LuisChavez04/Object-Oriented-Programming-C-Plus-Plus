@@ -1,3 +1,4 @@
+#ifndef RPG_H
 #define RPG_H
 
 #include <iostream>
@@ -12,6 +13,7 @@ class RPG {
         RPG();
         RPG(string name, int health, int strength, int defense, string type);
 
+        //Complete the rest
         RPG::RPG();
         RPG::RPG(string, int, int, int, string);
         
@@ -23,7 +25,10 @@ class RPG {
 
     private:
         //Complete the rest
+
+
         string type; //Warrior, Mage, Thief, Archer
         string skills[SKILL_SIZE];
 
 };
+#endif
