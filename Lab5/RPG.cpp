@@ -47,14 +47,14 @@ void RPG::setSkills(){
         skills[0] = "fire";
         skills[1] = "thunder";
     } else if (type == "thief"){
-        skills [0] = "pilfer";
-        skills [1] = "jab";
+        skills[0] = "pilfer";
+        skills[1] = "jab";
     } else if (type == "archer"){
-        skills [0] = "parry";
-        skills [1] = "crossbow_attack";
+        skills[0] = "parry";
+        skills[1] = "crossbow_attack";
     } else {
-        skills [0] = "slash";
-        skills [1] = "parry";
+        skills[0] = "slash";
+        skills[1] = "parry";
     }
 }
 
@@ -84,5 +84,5 @@ bool RPG::isAlive()
     } else {
         return false;
     }
-    if(health > 0){return true;} else{return false;}
+    //if(health > 0){return true;} else{return false;}
 }
