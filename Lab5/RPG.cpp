@@ -37,11 +37,15 @@ int RPG::getDefense() const{
     return defense;
 }
 
+string RPG::getType()
+{
+    return type;
+}
 
 void RPG::setSkills(){
     if (type == "mage"){
-        skills [0] = "fire";
-        skills [1] = "thunder";
+        skills[0] = "fire";
+        skills[1] = "thunder";
     } else if (type == "thief"){
         skills [0] = "pilfer";
         skills [1] = "jab";
@@ -75,9 +79,10 @@ void RPG::updateHealth(int new_health){
  */
 bool RPG::isAlive()
 {
-    if(int new_health > 0){
+    if(health > 0){
         return true;
     } else {
         return false;
     }
+    if(health > 0){return true;} else{return false;}
 }
