@@ -18,11 +18,10 @@ void displayStats(RPG player1, RPG player2){
     printf("\n%s Current Stats\n", player2.getName().c_str());
     printf("Health: %i\t Strength: %i\t Defense: %i\n", player2.getHealth(), player2.getStrength(), player2.getDefense());
 
-
-
     printf("\nPlayer 1's New Health: %i\n", player1.getHealth());
-    
+
     printf("\nPlayer 2's New Health: %i\n", player2.getHealth());
+
 }
 
 /**
