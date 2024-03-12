@@ -103,3 +103,20 @@ void RPG::attack(RPG * opponent){
 
     int new_health = opp_health - (strength - opp_def);
 }
+
+/**
+ * @brief prompts the user to choose a skill and calls printAction() and attack()
+ * 
+ * @param opponent 
+ */
+void RPG::useSkill(RPG * opponent){
+    for(int i = 0; i < SKILL_SIZE; i++){
+        printf("Skill %i: %s\n", i, skills[i].c_str());
+    }
+    int chosen_skill_index;
+    printf("Choose a skill to use: Enter 0 or 1\n");
+    cin >> chosen_skill_index;
+    string chosen_skill = skills[chosen_skill_index];
+    printAction(chosen_skill, (*opponent));
+    attack(opponent);
+}
