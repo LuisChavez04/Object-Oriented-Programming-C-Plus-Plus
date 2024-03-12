@@ -95,6 +95,9 @@ bool RPG::isAlive()
  * strength is 20, then after the attack, opponent's health should be
  * 85 (i.e. 100 - (20-5)).
  * 
+ * First calculate the opponent's health, then use (*opponent).updateHealth(new_health)
+ * to update their health
+ * 
  * @param opponent 
  */
 void RPG::attack(RPG * opponent){
@@ -102,6 +105,7 @@ void RPG::attack(RPG * opponent){
     int opp_def = (*opponent).getDefense();
 
     int new_health = opp_health - (strength - opp_def);
+    (*opponent).updateHealth(new_health);
 }
 
 /**
