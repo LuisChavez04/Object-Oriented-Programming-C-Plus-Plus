@@ -87,6 +87,16 @@ bool RPG::isAlive()
     //if(health > 0){return true;} else{return false;}
 }
 
+/**
+ * @brief attack decreases the opponent's health by (strength - opponent's defense)
+ * In other words, the opponent's defense should soften the blow from the attack
+ * 
+ * For example, if opponent's health is 100, opponent's defense is 5, and player's
+ * strength is 20, then after the attack, opponent's health should be
+ * 85 (i.e. 100 - (20-5)).
+ * 
+ * @param opponent 
+ */
 void RPG::attack(RPG * opponent){
     int opp_health = (*opponent).getHealth();
     int opp_def = (*opponent).getDefense();
