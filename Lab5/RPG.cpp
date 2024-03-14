@@ -59,7 +59,7 @@ void RPG::setSkills(){
 }
 
 void RPG::printAction(string skill, RPG opponent){
-    printf("%s used %s on %s\n", name.c_str(), skill.c_str(), opponent.getName().c_str());
+    printf("\n%s used %s on %s\n", name.c_str(), skill.c_str(), opponent.getName().c_str());
 }
 
 /**
@@ -104,7 +104,12 @@ void RPG::attack(RPG * opponent){
     int opp_health = (*opponent).getHealth();
     int opp_def = (*opponent).getDefense();
 
-    int new_health = opp_health - (strength - opp_def);
+    int new_health;
+    if((strength - opp_def) > 0){
+        new_health = opp_health - (strength - opp_def);
+    }  else{
+        new_health = opp_health;
+    }
     (*opponent).updateHealth(new_health);
 }
 
