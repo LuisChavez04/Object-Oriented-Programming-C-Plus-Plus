@@ -17,11 +17,6 @@ void displayStats(RPG player1, RPG player2){
 
     printf("\n%s Current Stats\n", player2.getName().c_str());
     printf("Health: %i\t Strength: %i\t Defense: %i\n", player2.getHealth(), player2.getStrength(), player2.getDefense());
-
-    printf("\nPlayer 1's New Health: %i\n", player1.getHealth());
-
-    printf("\nPlayer 2's New Health: %i\n", player2.getHealth());
-
 }
 
 /**
@@ -36,10 +31,10 @@ void displayStats(RPG player1, RPG player2){
  */
 void displayEnd(RPG player1, RPG player2){
     if(player1.isAlive() == false){
-        printf("\nPlayer 1 is defeated\n");
-        printf("\nPlayer 2 Wins! Good game!\n");
+        printf("\nPlayer 1 was defeated\n");
+        printf("\nThe NPC Wins! Good game!\n");
     } else{
-        printf("\nPlayer 2 is defeated\n");
+        printf("\nThe NPC was defeated\n");
         printf("\nPlayer 1 wins! Good game!\n");
     }
 }
@@ -68,11 +63,11 @@ void gameLoop(RPG * player1, RPG * player2){
 
         printf("\nPlayer 1's Turn: \n");
         (*player1).useSkill(player2);
-        printf("-------------------------------------\n");
+        printf("\n-------------------------------------\n");
 
-        printf("\nPlayer 2's Turn: \n");
+        printf("\nNPC's Turn: \n");
         (*player2).useSkill(player1);
-        printf("-------------------------------------\n");
+        printf("\n-------------------------------------\n");
     }
 }
 
