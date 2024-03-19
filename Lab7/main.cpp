@@ -65,7 +65,7 @@ void writeToFile(string filename, char * arr, int sample_size){
         file << "\n";
     }
     file.close();
-    printf("%c\n", filename.c_str());
+    printf("%s\n", filename.c_str());
 }
 
 /**
@@ -74,7 +74,7 @@ void writeToFile(string filename, char * arr, int sample_size){
  * @param filename 
  */
 void readFile(string filename){
-
+    ifstream file(filename);
 }
 
 
