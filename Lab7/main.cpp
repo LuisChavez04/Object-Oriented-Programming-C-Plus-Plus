@@ -94,12 +94,19 @@ void writeToFile(string filename, char * arr, int sample_size){
  */
 void readFile(string filename){
     ifstream file(filename);
-    if(file.fail()){
-        cout << filename << endl;
     
-        file.close();
-        return;
+    if(!file.fail()){
+        cout << "Couldn't open file" << endl;
     }
+    while(file.is_open()){
+        file.open("array_int.csv");
+
+        file.open("array_str.csv");
+
+        file.open("array_char.csv");
+    }
+
+    file.close();
 }
 
 
