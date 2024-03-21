@@ -1,6 +1,5 @@
 #include <iostream>
 #include <fstream>
-#include <string>
 using namespace std;
 
 /**
@@ -96,7 +95,7 @@ void writeToFile(string filename, char * arr, int sample_size){
 void readFile(string filename){
     ifstream file(filename);
     if(file.fail()){
-        cout << "Couldn't open file " << filename << endl;
+        cout << filename << endl;
     
         file.close();
         return;
