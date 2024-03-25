@@ -93,20 +93,17 @@ void writeToFile(string filename, char * arr, int sample_size){
  * @param filename 
  */
 void readFile(string filename){
-    ifstream file(filename);
-    
-    if(!file.fail()){
-        cout << "Couldn't open file" << endl;
+  ifstream file(filename);
+  string line;
+
+  if(file.is_open()){
+    while(getline(file, line)){
+        cout << line << endl;
     }
-    while(file.is_open()){
-        file.open("array_int.csv");
-
-        file.open("array_str.csv");
-
-        file.open("array_char.csv");
-    }
-
     file.close();
+  } else{
+    cout << "Error opening file: " << filename << endl;
+  }
 }
 
 
@@ -140,9 +137,9 @@ int main(){
 
 
     //CALL readFile() on all three generated files
-    string filename = "display_functions";
-    readFile(filename);
-
+    readFile(int_file);
+    readFile(str_file);
+    readFile(char_file);
 
     return 0;
 }
