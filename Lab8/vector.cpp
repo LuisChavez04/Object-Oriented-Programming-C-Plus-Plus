@@ -19,8 +19,10 @@ void incVecBy10(...){}
 
 int main() {
     // create a constant integer called SIZE that is of value 5
+    const int SIZE = 5;
 
     // create a vector of integers called vec that can hold up to 5 elements
+    vector < int > v(SIZE);
 
     // use a for loop to populate vec with the values 100 to 104
 
