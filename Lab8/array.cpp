@@ -26,3 +26,17 @@ void incArrBy10(int * arr, int size) { // void incArrBy10(int arr[], int size)
         arr[i] += 10;
     }
 }
+
+int main() {
+    const int SIZE = 5;
+    int arr[SIZE];
+    for(int i = 0; i < SIZE; i++){
+        arr[i] = 100 + i;
+    }
+    printf("Before------------\n");
+    printMemArr(arr, SIZE);
+    incArrBy10(arr, SIZE);
+    printf("After------------\n");
+    printMemArr(arr, SIZE);
+    return 0;
+}
