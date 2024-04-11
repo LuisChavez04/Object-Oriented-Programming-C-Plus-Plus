@@ -49,17 +49,25 @@ int iterativeSearch(vector<int>v, int elem){
  */
 int binarySearch(vector<int> & v, int start, int end, int elem){
     //write an if statement that checks the terminating case
+    if(start > end){
     //inside the if statement return -1
+        return -1;
+    }
 
     // instantiate the midpoint
+    int mid = (start + end) / 2;
 
     // Use if/else statements to do the following:
     // 1) update end (search left half)
-
-    //2) update start (search right half)
-
-    //3) return mid (found the elem)
-
+    // 2) update start (search right half)
+    // 3) return mid (found the elem)
+    if(v[mid] == elem){
+        return mid;
+    } else if(v[mid] < elem){
+        return binarySearch(v, mid + 1, end, elem);
+    } else{
+        return binarySearch(v, start, mid -1, elem);
+    }
     // return a recursive call to binarySearch(...)
 
 }
@@ -72,4 +80,47 @@ void vecGen(string filename, vector<int> & v){
         v.push_back(num);
     }
     file.close();
+}
+
+int main(){
+    // populate v with 10000 sorted numbers (leave as is)
+    vector<int> v;
+    vecGen("10000_numbers.csv", v);
+
+    // test elements to search for (leave as is)
+    vector<int> elem_to_find;
+    vecGen("test_elem.csv", elem_to_find);
+
+
+    // reads through all 10 of the test_elem values and calls iterative search
+    // and records how long each search took (leave as is)
+    for(int i = 0; i < elem_to_find.size(); i++){
+        // gets the elem to search for
+        int elem = elem_to_find[i];
+
+        // stopwatches the time
+        clock_t start = clock();                        // start time
+        int index_if_found = iterativeSearch(v, elem);  // call search
+        clock_t end = clock();                          // end itme
+
+        // calculates the total time it took in seconds
+        double elsapsed_time_in_sec = (double(end - start)/CLOCKS_PER_SEC);
+
+        //prints the index and how long it took to find it
+        cout << index_if_found << ": " << elsapsed_time_in_sec << endl;
+
+
+        // repeat the for loop above so that it records the time
+        // it takes for binarySearch to do the same operation
+
+        clock_t start = clock();                        // start time
+        int index_if_found = binarySearch(v);            // call search
+        clock_t end = clock();                          // end itme
+
+        // calculates the total time it took in seconds
+        double elsapsed_time_in_sec = (double(end - start)/CLOCKS_PER_SEC);
+
+        //prints the index and how long it took to find it
+        cout << index_if_found << ": " << elsapsed_time_in_sec << endl;
+    }
 }
