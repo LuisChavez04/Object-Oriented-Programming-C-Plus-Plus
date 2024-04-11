@@ -103,7 +103,7 @@ int main(){
         clock_t end = clock();                          // end itme
 
         // calculates the total time it took in seconds
-        double elsapsed_time_in_sec = (double(end - start)/double (CLOCKS_PER_SEC));
+        double elsapsed_time_in_sec = (double(end - start)/double(CLOCKS_PER_SEC));
 
         //prints the index and how long it took to find it
         cout << index_if_found << ": " << elsapsed_time_in_sec << endl;
@@ -120,7 +120,7 @@ int main(){
         clock_t end = clock();                          // end itme
 
         // calculates the total time it took in seconds
-        double elsapsed_time_in_sec = (double(end - start)/double (CLOCKS_PER_SEC));
+        double elsapsed_time_in_sec = (double(end - start)/double(CLOCKS_PER_SEC));
 
         //prints the index and how long it took to find it
         cout << index_if_found << ": " << elsapsed_time_in_sec << endl;
