@@ -24,10 +24,9 @@ int iterativeSearch(vector<int>v, int elem){
         if(v[i] == elem){
             return i;
         }
-
-    // outside of the for loop return -1
-        return -1;
     }
+    // outside of the for loop return -1
+    return -1;
 }
 
 /**
@@ -104,21 +103,24 @@ int main(){
         clock_t end = clock();                          // end itme
 
         // calculates the total time it took in seconds
-        double elsapsed_time_in_sec = (double(end - start)/CLOCKS_PER_SEC);
+        double elsapsed_time_in_sec = (double(end - start)/double (CLOCKS_PER_SEC));
 
         //prints the index and how long it took to find it
         cout << index_if_found << ": " << elsapsed_time_in_sec << endl;
-
-
+    }
+    
         // repeat the for loop above so that it records the time
         // it takes for binarySearch to do the same operation
+    for(int i = 0; i < elem_to_find.size(); i++){
+        // gets the elem to search for
+        int elem = elem_to_find[i];
 
         clock_t start = clock();                        // start time
-        int index_if_found = binarySearch(v);            // call search
+        int index_if_found = binarySearch(v, 0, v.size(), elem);            // call search
         clock_t end = clock();                          // end itme
 
         // calculates the total time it took in seconds
-        double elsapsed_time_in_sec = (double(end - start)/CLOCKS_PER_SEC);
+        double elsapsed_time_in_sec = (double(end - start)/double (CLOCKS_PER_SEC));
 
         //prints the index and how long it took to find it
         cout << index_if_found << ": " << elsapsed_time_in_sec << endl;
