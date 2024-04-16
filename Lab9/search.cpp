@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
-#include <ctime>
+#include <chrono>
 using namespace std;
 
 
@@ -98,15 +98,15 @@ int main(){
         int elem = elem_to_find[i];
 
         // stopwatches the time
-        clock_t start = clock();                        // start time
+        auto start = std::chrono::high_resolution_clock::now();                        // start time
         int index_if_found = iterativeSearch(v, elem);  // call search
-        clock_t end = clock();                          // end itme
+        auto end = std::chrono::high_resolution_clock::now();                          // end itme
 
         // calculates the total time it took in seconds
-        double elsapsed_time_in_sec = (double(end - start)/double(CLOCKS_PER_SEC));
+        auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
 
         //prints the index and how long it took to find it
-        cout << index_if_found << ": " << elsapsed_time_in_sec << endl;
+        cout << index_if_found << ": " << duration.count() << endl;
     }
     
         // repeat the for loop above so that it records the time
@@ -115,14 +115,14 @@ int main(){
         // gets the elem to search for
         int elem = elem_to_find[i];
 
-        clock_t start = clock();                        // start time
+        auto start = std::chrono::high_resolution_clock::now();                        // start time
         int index_if_found = binarySearch(v, 0, v.size(), elem);            // call search
-        clock_t end = clock();                          // end itme
+        auto end = std::chrono::high_resolution_clock::now();                          // end itme
 
         // calculates the total time it took in seconds
-        double elsapsed_time_in_sec = (double(end - start)/double(CLOCKS_PER_SEC));
+        auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
 
         //prints the index and how long it took to find it
-        cout << index_if_found << ": " << elsapsed_time_in_sec << endl;
+        cout << index_if_found << ": " << duration.count() << endl;
     }
 }
