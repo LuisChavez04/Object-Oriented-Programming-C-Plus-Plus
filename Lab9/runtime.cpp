@@ -81,48 +81,65 @@ void vecGen(string filename, vector<int> & v){
     file.close();
 }
 
-int main(){
-    // populate v with 10000 sorted numbers (leave as is)
-    vector<int> v;
-    vecGen("10000_numbers.csv", v);
+/**
+ * @brief writes to file the time it took to search with respect to the
+ *  size of the vector, n
+ *  Number of Elements (n)      Time (sec)
+ *  XXXX                        X.XXXXX
+ *  XXXX                        X.XXXXX
+ * 
+ * @param filename (string) : filename (e.g. output_10000_numbers.csv)
+ * @param times (vector<double>) : average times
+ * @param n (vector<int>) : sizes of vectors
+ */
+void writeTimes(string filename, const vector<double> times, const vector<int> n){
+    ofstream myFile(filename);
 
-    // test elements to search for (leave as is)
+    myFile << "Number of Elements (n)\t Time (sec) " << endl;
+    for(int i = 0; i < times.size(); i++){
+
+        myFile << n[i] << "\t" << times[i] << "\n";
+    }
+    myFile.close();
+    cout << "Wrote to " << filename << endl;
+}
+
+/**
+ * @brief computes the average of the elements in vector, a
+ * 
+ * @param a vector of double
+ * @return double 
+ */
+double average(const vector<double> a){
+    
+}
+
+int main(){
+    // test elements to search for
     vector<int> elem_to_find;
     vecGen("test_elem.csv", elem_to_find);
+    // size (n) of all tests
+    vector<int> file_size;
+    vecGen("sizes.csv", file_size);
 
+    //n list of numbers
+    vector<int>v;
 
-    // reads through all 10 of the test_elem values and calls iterative search
-    // and records how long each search took (leave as is)
-    for(int i = 0; i < elem_to_find.size(); i++){
-        // gets the elem to search for
-        int elem = elem_to_find[i];
+    //results of times
+    vector<double> times;
 
-        // stopwatches the time
-        auto start = std::chrono::high_resolution_clock::now();                        // start time
-        int index_if_found = iterativeSearch(v, elem);  // call search
-        auto end = std::chrono::high_resolution_clock::now();                          // end itme
+    //results of times
+    vector<double> avg;
 
-        // calculates the total time it took in seconds
-        auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+    // create a for loop to iterate through the file sizes
+    for(int i = 0; i < file_size.size(); i++) {
+    // get the name/size of the file and assign it to string called filename
+        string filename = to_string(file_size[i]) + "_numbers.csv";
+    //call vecGen on filename and v
+        vecGen(filename);
+        vecGen(v);
 
-        //prints the index and how long it took to find it
-        cout << index_if_found << ": " << duration.count() << endl;
+    //print filename (this will be good for debugging)
     }
-    
-        // repeat the for loop above so that it records the time
-        // it takes for binarySearch to do the same operation
-    for(int i = 0; i < elem_to_find.size(); i++){
-        // gets the elem to search for
-        int elem = elem_to_find[i];
 
-        auto start = std::chrono::high_resolution_clock::now();                        // start time
-        int index_if_found = binarySearch(v, 0, v.size(), elem);            // call search
-        auto end = std::chrono::high_resolution_clock::now();                          // end itme
-
-        // calculates the total time it took in seconds
-        auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
-
-        //prints the index and how long it took to find it
-        cout << index_if_found << ": " << duration.count() << endl;
-    }
 }
