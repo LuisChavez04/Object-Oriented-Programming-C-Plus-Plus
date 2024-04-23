@@ -111,7 +111,11 @@ void writeTimes(string filename, const vector<double> times, const vector<int> n
  * @return double 
  */
 double average(const vector<double> a){
-    
+    int sum = 0;
+    for(int i = 0; i < a.size(); i++){
+        sum = sum + a[i];
+    }
+    return sum / a.size();
 }
 
 int main(){
@@ -136,10 +140,16 @@ int main(){
     // get the name/size of the file and assign it to string called filename
         string filename = to_string(file_size[i]) + "_numbers.csv";
     //call vecGen on filename and v
-        vecGen(filename);
-        vecGen(v);
+        vecGen(filename, v);
 
     //print filename (this will be good for debugging)
+        cout << filename << endl;
+
+    //call times.clear() // this ensures that we reset times everytime we read a new file
+        times.clear();
+
+    //create another for loop to iterate through all the elements from elem_to_find.
+    // the code here should be nearly identical to the code from the previous lab
     }
 
 }
