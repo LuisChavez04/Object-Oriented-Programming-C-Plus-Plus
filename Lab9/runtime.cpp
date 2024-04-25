@@ -166,23 +166,6 @@ int main(){
             // through all the elements from elem_to_find
             times.push_back(duration);
         }
-
-        for(int i = 0; i < elem_to_find.size(); i++){
-            int elem = elem_to_find[i];
-
-            auto start = std::chrono::high_resolution_clock::now();
-            int index_if_found = binarySearch(v, 0, v.size(), elem);
-            auto end = std::chrono::high_resolution_clock::now();
-
-            auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
-            cout << index_if_found << ": " << duration.count() << endl;
-
-            times.push_back(duration);
-        }
-
-        // call average on vector, times, and save it as a double. This code should be
-        // outside the for loop that iterates through all the elements from elem_to_find
-        // but within the for loop that iterates through the file sizes
             std::chrono::microseconds avg_time = average(times);
             avg.push_back(avg_time);
 
@@ -194,7 +177,32 @@ int main(){
         // but within the for loop that iterates through the file sizes    
 
     }
-    
+
+    //This next part is purely for binarySearch
+    for(int i = 0; i < file_size.size(); i++) {
+            string filename = to_string(file_size[i]) + "_numbers.csv";
+
+            vecGen(filename, v);
+
+            cout << filename << endl;
+
+            times.clear();
+
+            for(int i = 0; i < elem_to_find.size(); i++){
+            int elem = elem_to_find[i];
+
+            auto start = std::chrono::high_resolution_clock::now();
+            int index_if_found = binarySearch(v, 0, v.size(), elem);
+            auto end = std::chrono::high_resolution_clock::now();
+
+            auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+            cout << index_if_found << ": " << duration.count() << endl;
+
+            times.push_back(duration);
+        }
+            std::chrono::microseconds avg_time = average(times);
+            avg.push_back(avg_time);
+    }
 
     //Outside both for loops call writeTimes with the appropriate parameters
     // the first parameter should be "binarySearch_times.csv"
