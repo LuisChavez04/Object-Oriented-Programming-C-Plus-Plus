@@ -92,13 +92,13 @@ void vecGen(string filename, vector<int> & v){
  * @param times (vector<double>) : average times
  * @param n (vector<int>) : sizes of vectors
  */
-void writeTimes(string filename, const vector< chrono::microseconds > times, const vector<int> n){
+void writeTimes(string filename, const vector<chrono::microseconds> times, const vector<int> n){
     ofstream myFile(filename);
 
     myFile << "Number of Elements (n)\t Time (sec) " << endl;
     for(int i = 0; i < times.size(); i++){
 
-        myFile << n[i] << "\t" << times[i] << "\n";
+        myFile << n[i] << "\t" << std::chrono::duration<double>(times[i]).count() << "\n";
     }
     myFile.close();
     cout << "Wrote to " << filename << endl;
@@ -184,15 +184,17 @@ int main(){
         // outside the for loop that iterates through all the elements from elem_to_find
         // but within the for loop that iterates through the file sizes
             std::chrono::microseconds avg_time = average(times);
+            avg.push_back(avg_time);
 
 
         // append the double to avg. (hint: push_back())
-            avg.push_back(avg_time);
+            //avg.push_back(avg_time);
         // This code should be outside the for loop that iterates throught
         // all the elements from elem_to_find
         // but within the for loop that iterates through the file sizes    
 
     }
+    
 
     //Outside both for loops call writeTimes with the appropriate parameters
     // the first parameter should be "binarySearch_times.csv"
