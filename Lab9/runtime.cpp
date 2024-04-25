@@ -92,7 +92,7 @@ void vecGen(string filename, vector<int> & v){
  * @param times (vector<double>) : average times
  * @param n (vector<int>) : sizes of vectors
  */
-void writeTimes(string filename, const vector<double> times, const vector<int> n){
+void writeTimes(string filename, const vector< chrono::microseconds > times, const vector<int> n){
     ofstream myFile(filename);
 
     myFile << "Number of Elements (n)\t Time (sec) " << endl;
@@ -110,8 +110,9 @@ void writeTimes(string filename, const vector<double> times, const vector<int> n
  * @param a vector of double
  * @return double 
  */
-double average(const vector<double> a){
-    int sum = 0;
+std::chrono::microseconds average(const vector<chrono::microseconds> a){
+    std::chrono::microseconds sum;
+    sum = std::chrono::microseconds::zero();
     for(int i = 0; i < a.size(); i++){
         sum = sum + a[i];
     }
@@ -130,26 +131,71 @@ int main(){
     vector<int>v;
 
     //results of times
-    vector<double> times;
+    vector<std::chrono::microseconds> times;
 
-    //results of times
-    vector<double> avg;
+    //results of average times
+    vector<std::chrono::microseconds> avg;
 
     // create a for loop to iterate through the file sizes
-    for(int i = 0; i < file_size.size(); i++) {
-    // get the name/size of the file and assign it to string called filename
-        string filename = to_string(file_size[i]) + "_numbers.csv";
-    //call vecGen on filename and v
-        vecGen(filename, v);
+        for(int i = 0; i < file_size.size(); i++) {
+        // get the name/size of the file and assign it to string called filename
+            string filename = to_string(file_size[i]) + "_numbers.csv";
+        //call vecGen on filename and v
+            vecGen(filename, v);
 
-    //print filename (this will be good for debugging)
-        cout << filename << endl;
+        //print filename (this will be good for debugging)
+            cout << filename << endl;
 
-    //call times.clear() // this ensures that we reset times everytime we read a new file
-        times.clear();
+        //call times.clear() // this ensures that we reset times everytime we read a new file
+            times.clear();
 
-    //create another for loop to iterate through all the elements from elem_to_find.
-    // the code here should be nearly identical to the code from the previous lab
+        //create another for loop to iterate through all the elements from elem_to_find.
+        // the code here should be nearly identical to the code from the previous lab
+        for(int i = 0; i < elem_to_find.size(); i++) {
+            int elem = elem_to_find[i];
+
+            auto start = std::chrono::high_resolution_clock::now();
+            int index_if_found = iterativeSearch(v, elem);
+            auto end = std::chrono::high_resolution_clock::now(); 
+        
+            auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+            cout << index_if_found << ": " << duration.count() << endl;
+            
+            // append the elapsed_time_in_sec to the vector, times (hint: push_back())
+            // This code should be within the for loop that iterates
+            // through all the elements from elem_to_find
+            times.push_back(duration);
+        }
+
+        for(int i = 0; i < elem_to_find.size(); i++){
+            int elem = elem_to_find[i];
+
+            auto start = std::chrono::high_resolution_clock::now();
+            int index_if_found = binarySearch(v, 0, v.size(), elem);
+            auto end = std::chrono::high_resolution_clock::now();
+
+            auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+            cout << index_if_found << ": " << duration.count() << endl;
+
+            times.push_back(duration);
+        }
+
+        // call average on vector, times, and save it as a double. This code should be
+        // outside the for loop that iterates through all the elements from elem_to_find
+        // but within the for loop that iterates through the file sizes
+            std::chrono::microseconds avg_time = average(times);
+
+
+        // append the double to avg. (hint: push_back())
+            avg.push_back(avg_time);
+        // This code should be outside the for loop that iterates throught
+        // all the elements from elem_to_find
+        // but within the for loop that iterates through the file sizes    
+
     }
 
+    //Outside both for loops call writeTimes with the appropriate parameters
+    // the first parameter should be "binarySearch_times.csv"
+    // read the function brief to complete the rest of the parameters
+    writeTimes("binarySearch_times.csv", avg, v);
 }
