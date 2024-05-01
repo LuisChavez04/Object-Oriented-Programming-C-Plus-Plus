@@ -177,6 +177,7 @@ int main(){
         // but within the for loop that iterates through the file sizes    
 
     }
+    writeTimes("iterativeSearch_times.csv", avg, v);
 
     //This next part is purely for binarySearch
     for(int i = 0; i < file_size.size(); i++) {
@@ -188,7 +189,7 @@ int main(){
 
             times.clear();
 
-            for(int i = 0; i < elem_to_find.size(); i++){
+        for(int i = 0; i < elem_to_find.size(); i++){
             int elem = elem_to_find[i];
 
             auto start = std::chrono::high_resolution_clock::now();
@@ -203,7 +204,6 @@ int main(){
             std::chrono::microseconds avg_time = average(times);
             avg.push_back(avg_time);
     }
-
     //Outside both for loops call writeTimes with the appropriate parameters
     // the first parameter should be "binarySearch_times.csv"
     // read the function brief to complete the rest of the parameters
